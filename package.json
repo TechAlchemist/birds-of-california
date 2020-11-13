@@ -18,6 +18,7 @@
     "express-session": "^1.17.1",
     "mongoose": "^5.10.14",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "validator": "^13.1.17"
   }
 }

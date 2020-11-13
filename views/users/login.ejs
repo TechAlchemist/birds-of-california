@@ -9,12 +9,14 @@
 </head>
 
 <body>
-    <h1>Signup</h1>
-    <form action="/users/signup" method="POST">
-        Username: <input type="text" name="username" /><br />
-        Email: <input type="email" name="email" /><br />
+    <h1>Login</h1>
+    <form action="/users/login" method="POST">
+        Email: <input type="email" name="username" /><br />
         Password: <input type="password" name="password" /><br />
-        <input type="submit" value="Signup" />
+        <input type="submit" value="Login" />
+        <% if (errorMessage != null){ %>
+            <%= errorMessage %>
+        <% } %>
     </form>
 </body>
 

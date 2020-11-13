@@ -1,0 +1,17 @@
+<ul>
+
+    <% if (userData != null && userData.username != '') { %>
+        <h1> <%= userData.username %> is signed in. </h1> 
+    <li>
+        <a href="users/signout">Logout</a>
+    </li>
+    <% } else { %>
+    <li>
+        <a href="/users/new">Signup</a>
+    </li>
+    <li>
+        <a href="/users/login">Login</a>
+    </li>
+    <% } %>
+
+</ul>
