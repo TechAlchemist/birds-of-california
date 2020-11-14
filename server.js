@@ -5,6 +5,9 @@ const port = 3000;
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const profileRouter = require('./routes/profile');
+const checklistRouter = require('./routes/checklist-builder');
+const speciesRouter = require('./routes/species-explorer');
+const sightingsRouter = require('./routes/sighting-reports');
 const session = require('express-session');
 
 const app = express();
@@ -28,5 +31,8 @@ app.use(authorization.addUserToRequest);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/profile', profileRouter);
+app.use('/checklist', checklistRouter);
+app.use('/species', speciesRouter);
+app.use('/sightings', sightingsRouter);
 
 app.listen(port, () => console.log(`Port up and listening on port ${port}`));
