@@ -32,9 +32,23 @@ function populateChecklist(birdData) {
 function postChecklistData() {
     console.log('PostChecklistData was clicked. ');
     const table = $('#builtCollection').DataTable();
-
+    let obj = {};
     var form_data  = table.rows().data();
-    console.log(form_data);
+    for (let i = 0; i < form_data.length; i++) {
+        obj[i] = form_data[i];   
+    }
+   
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(obj),
+        contentType: 'application/json',
+        url: '/checklist/create',						
+        success: function(obj) {
+            console.log('success');
+            // console.log(JSON.stringify(data));
+        }
+    });
+
 }
 
 
@@ -42,4 +56,3 @@ function postChecklistData() {
 
 
 
-        // $.post('/email', { address: 'xxx@example.com' });

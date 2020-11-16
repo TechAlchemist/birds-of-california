@@ -15,10 +15,11 @@ const app = express();
 require('./config/database');
 
 app.set('view engine', 'ejs');
- 
+app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
+
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
