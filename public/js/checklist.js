@@ -1,18 +1,45 @@
-// code pulled from we3schools
+$('#postData').on('click', postChecklistData);
 
-function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+$(document).ready(function() {
+    const table = $('#speciesTable').DataTable();
+ 
+    $('#speciesTable tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+    } );
+ 
+    $('#checklistSubmit').click( function () {
+        if (table.rows('.selected').data().length > 0) {
+            populateChecklist(table.rows('.selected').data());
         }
+    } );
+
+} );
+
+function populateChecklist(birdData) {
+    $('#builtCollection').css('display', 'table');
+    const table = $('#builtCollection').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print', 'pdf'
+        ]
+    });
+
+    for (let i = 0; i < birdData.length; i++) {
+        table.row.add(birdData[i]).draw();
     }
 }
+
+function postChecklistData() {
+    console.log('PostChecklistData was clicked. ');
+    const table = $('#builtCollection').DataTable();
+
+    var form_data  = table.rows().data();
+    console.log(form_data);
+}
+
+
+
+
+
+
+        // $.post('/email', { address: 'xxx@example.com' });

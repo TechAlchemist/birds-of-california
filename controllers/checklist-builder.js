@@ -1,6 +1,13 @@
+const Bird = require('../models/bird');
+
 function index(req, res) {
-    // console.log('req.user inside index controller', req.user);
-    res.render('checklist/index');
+    Bird.find({}, function(error, birds) {
+        console.log(error)
+        res.render('checklist/index', {
+            birds
+        });
+    });
+    
 }
 
 module.exports = {

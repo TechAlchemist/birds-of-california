@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- DataTables Plugin -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.2/css/colReorder.dataTables.min.css">
+    
+    <!-- Materialize CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/checklistBuilder.css">
+    <script src="/js/checklist.js" defer></script>
+
     <title>Checklist</title>
 </head>
+
 <body>
-    Checklist
+    <div class="container">
+        <p> How to use this checklist. </p>
+        <ol>
+            <li> Select the species you want to add to the checklist. </li>
+            <li> Add the species to checklist via the Submit Birds button. </li>
+            <li> Save the checklist to your account, download the list, or print the list. </li>
+        </ol>
+        <table id="speciesTable" class="display">
+            <thead>
+                <tr>
+                    <th>Common Name</th>
+                    <th>Latin Name</th>
+                    <th>Family</th>
+                    <th>Order</th>
+                </tr>
+            </thead>
+            <% birds.forEach(bird => { %>
+            <tr>
+                <td> <%= bird.commonName %> </td>
+                <td> <%= bird.latinName %> </td>
+                <td> <%= bird.family %> </td>
+                <td> <%= bird.order %> </td>
+            </tr>
+            <% }) %>
+        </table>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="checklistSubmit">Submit Birds
+            <i class="material-icons right">add</i>
+        </button>
+        <br>
+        <hr>
+
+        <table id="builtCollection" class="display">
+            <thead>
+                <tr>
+                    <th>Common Name</th>
+                    <th>Latin Name</th>
+                    <th>Family</th>
+                    <th>Order</th>
+                </tr>
+            </thead>
+        </table>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="postData">Archive List
+            <i class="material-icons right">import_export</i>
+        </button>
+    </div>
+
+
 </body>
+
 </html>
