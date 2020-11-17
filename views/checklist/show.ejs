@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Show EJS </h1>
+    <%- include('../partials/nav.ejs') %>
+    <h3><%= list.listTitle %> </h3>
+    <% records.forEach(bird => { %>
+        <p> <strong>  <%= bird.commonName %> </strong> </p>
+        <p> <%= bird.latinName %> </p>
+        <p> <%= bird.family %> </p>
+        <p> <%= bird.order %> </p>
+        <% }) %>
+</body>
+</html>

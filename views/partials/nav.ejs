@@ -1,7 +1,10 @@
 <ul>
 
     <% if (userData != null && userData.username != '') { %>
-        <h1> <%= userData.username %> is signed in. </h1> 
+    <h1> <%= userData.username %> is signed in. </h1>
+    <li>
+        <a href="/checklist/viewer">My Checklists</a>
+    </li>
     <li>
         <a href="users/signout">Logout</a>
     </li>
@@ -13,8 +16,8 @@
         <a href="/users/login">Login</a>
     </li>
     <% } %>
-    <li> <a href="/species"> Species Explorer </a>  </li>
+    <li> <a href="/species"> Species Explorer </a> </li>
     <li> <a href="/sightings"> Sightings Reports </a> </li>
-    <li> <a href="/checklist"> Sighting Checklists </a> </li>
+    <li> <a href="/checklist"> Checklist Builder </a> </li>
 
 </ul>

@@ -2,7 +2,9 @@ $('#postData').on('click', postChecklistData);
 
 $(document).ready(function() {
     const table = $('#speciesTable').DataTable();
- 
+    // Hide first row of bird ids. 
+    table.column(0).visible(false);
+
     $('#speciesTable tbody').on( 'click', 'tr', function () {
         $(this).toggleClass('selected');
     } );
@@ -23,29 +25,30 @@ function populateChecklist(birdData) {
             'print', 'pdf'
         ]
     });
-
+    // table.column(0).visible(0);
     for (let i = 0; i < birdData.length; i++) {
         table.row.add(birdData[i]).draw();
     }
 }
 
 function postChecklistData() {
-    console.log('PostChecklistData was clicked. ');
     const table = $('#builtCollection').DataTable();
-    let obj = {};
-    var form_data  = table.rows().data();
-    for (let i = 0; i < form_data.length; i++) {
-        obj[i] = form_data[i];   
+    let birdData = {};
+    var tableData  = table.rows().data();
+    for (let i = 0; i < tableData.length; i++) {
+        // pull only bird ids
+        birdData[i] = tableData[i][0];   
     }
+    console.log($('#icon_prefix').val());
+    let listTitle = $('#icon_prefix').val();
    
     $.ajax({
         type: 'POST',
-        data: JSON.stringify(obj),
+        data: JSON.stringify({'birdsIds': birdData, 'title': listTitle}),
         contentType: 'application/json',
         url: '/checklist/create',						
-        success: function(obj) {
-            console.log('success');
-            // console.log(JSON.stringify(data));
+        success: function(birdData) {
+            location.reload();
         }
     });
 
