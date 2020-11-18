@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('../partials/cdns.ejs') %>
+    <script src="/js/show-checklist.js" defer></script>
+    <title>Show <%= list.listTitle%> </title>
 </head>
+
 <body>
-    <h1> Show EJS </h1>
-    <%- include('../partials/nav.ejs') %>
-    <h3><%= list.listTitle %> </h3>
-    <% records.forEach(bird => { %>
-        <p> <strong>  <%= bird.commonName %> </strong> </p>
-        <p> <%= bird.latinName %> </p>
-        <p> <%= bird.family %> </p>
-        <p> <%= bird.order %> </p>
-        <% }) %>
+
+    <div class="container">
+        <h1> Show EJS </h1>
+
+        <%- include('../partials/nav.ejs') %>
+        <h3><%= list.listTitle %> </h3>
+
+        <table id="checkListShow" class="display">
+            <thead>
+                <tr>
+                    <th>Bird Id</th>
+                    <th>Common Name</th>
+                    <th>Latin Name</th>
+                    <th>Family</th>
+                    <th>Order</th>
+                </tr>
+            </thead>
+            <% records.forEach(bird => { %>
+            <tr>
+                <td> <%= bird._id %> </td>
+                <td> <%= bird.commonName %> </td>
+                <td> <%= bird.latinName %> </td>
+                <td> <%= bird.family %> </td>
+                <td> <%= bird.order %> </td>
+            </tr>
+            <% }) %>
+        </table>
+        <button class="btn waves-effect waves-light" value="<%= list._id %>" type="submit" name="action" id="deleteBirdSubmit">Delete Selected
+            Bird
+            <i class="material-icons right">delete</i>
+        </button>
+        <div class="input-field col s6">
+            <input id="icon_prefix" type="text" class="validate">
+            <label for="icon_prefix">Change the name of your list!</label>
+        </div>
+        
+
+
+
+
+    </div>
+ 
+
 </body>
+
 </html>

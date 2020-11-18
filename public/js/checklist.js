@@ -34,7 +34,7 @@ function populateChecklist(birdData) {
 function postChecklistData() {
     const table = $('#builtCollection').DataTable();
     let birdData = {};
-    var tableData  = table.rows().data();
+    let tableData  = table.rows().data();
     for (let i = 0; i < tableData.length; i++) {
         // pull only bird ids
         birdData[i] = tableData[i][0];   

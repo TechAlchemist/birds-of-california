@@ -52,7 +52,7 @@ function viewer(req, res) {
 }
 
 function show(req, res) {
-    Checklist.findById(req.params.id, function(error, list) {
+    Checklist.findById(req.params.id, function (error, list) {
         let ids = list.birdIds.split(',');
         Bird.find().where('_id').in(ids).exec((err, records) => {
             res.render('checklist/show', {
@@ -61,14 +61,51 @@ function show(req, res) {
                 userData: req.user
             });
         });
-        
+
     })
+}
+
+function update(req, res) {
+
+    let arr = [];
+    let data = req.body;
+    // console.log(req.body);
+
+    for (birdId in data.birdsIds) {
+        arr.push(data.birdsIds[birdId]);
+    }
+    let joinedArr = arr.join(',');
+    // console.log(joinedArr);
+    let listId = data.listId;
+    let listTitle = data.listTitle;
+
+    // checklist.belongsTo = '5faee53eef98e415608b56c9';
+    // checklist.birdIds = joinedArr;
+
+    Checklist.findById(listId, function (error, checklist) {
+        checklist.birdIds = joinedArr; // update the birds in the list
+        if (listTitle != '') checklist.listTitle = listTitle; // update list title
+
+        checklist.save(function (error) {
+            if (error) {
+                console.log('FATAL ERROR IN DOCUMENT INSERTION. ');
+                res.redirect('/');
+            }
+            else {
+                console.log('CHECKLIST DOCUMENT INSERTED SUCCESSFULLY. ');
+                res.redirect('/');
+            }
+        })
+    })
+
+
 }
 
 module.exports = {
     index,
     create,
     viewer,
-    show
+    show,
+    update
 };
 
