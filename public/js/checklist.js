@@ -1,4 +1,5 @@
 $('#postData').on('click', postChecklistData);
+$('#builtCollectionContainer').css('display', 'none');
 
 $(document).ready(function() {
     const table = $('#speciesTable').DataTable();
@@ -19,6 +20,7 @@ $(document).ready(function() {
 
 function populateChecklist(birdData) {
     $('#builtCollection').css('display', 'table');
+    $('#builtCollectionContainer').css('display', 'block');
     const table = $('#builtCollection').DataTable({
         dom: 'Bfrtip',
         buttons: [

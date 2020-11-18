@@ -3,7 +3,7 @@
         <% if (userData != null && userData.username != '') { %>
         <div class="user-view">
             <div class="background">
-                <img src="/img/losthills.jpg">
+                <img src="/img/coalinga.jpg">
             </div>
             <a href="#user"><img class="circle" src="/img/profile.jpg"></a>
             <a href="#name"><span class="white-text name"> <%=userData.username%></span></a>
@@ -24,6 +24,10 @@
     <li>
         <div class="divider"></div>
     </li>
+    <li><a class="waves-effect" href="/checklist/viewer"><i class="material-icons">topic</i>My Checklists</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
     <li><a class="waves-effect" href="users/signout"><i class="material-icons">exit_to_app</i>Logout</a></li>
     <% } else { %>
 
@@ -40,3 +44,26 @@
 
 
 </ul>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i
+                        class="material-icons">menu</i></a>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">BIRDS OF CALIFORNIA</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
+</script>

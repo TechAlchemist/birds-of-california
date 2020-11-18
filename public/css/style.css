@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=B612&display=swap");
+
+body {
+  font-family: "B612", sans-serif;
+}
+nav {
+  background-color: #606c38 !important;
+}
+.section {
+  background-color: white;
+  color: #606c38;
+}
+
+.page-footer {
+  background-color: #606c38 !important;
+}
+.btn.waves-effect.waves-light {
+  background-color: #fefae0 !important;
+  color: #606c38;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+#checklistBuilderContainer {
+  padding: 3px;
+  margin-bottom: 2px;
+}
+
+#builtCollectionContainer {
+  margin-top: 10px;
+  padding: 3px;
+}
+
+.card {
+    width: 100%;
+
+}

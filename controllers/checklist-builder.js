@@ -22,7 +22,7 @@ function create(req, res) {
     let joinedArr = arr.join(',');
     let title = data.title;
     const checklist = new Checklist();
-    checklist.belongsTo = '5faee53eef98e415608b56c9';
+    checklist.belongsTo = req.user.id;
     checklist.birdIds = joinedArr;
     if (title != '') checklist.listTitle = title;
     checklist.save(function (error) {
@@ -39,7 +39,7 @@ function create(req, res) {
 }
 
 function viewer(req, res) {
-    Checklist.find({ "belongsTo": '5faee53eef98e415608b56c9' }, function (error, checklists) {
+    Checklist.find({ "belongsTo": req.user.id }, function (error, checklists) {
         res.render('checklist/viewer', {
             userData: req.user,
             checklists
@@ -51,10 +51,14 @@ function show(req, res) {
     Checklist.findById(req.params.id, function (error, list) {
         let ids = list.birdIds.split(',');
         Bird.find().where('_id').in(ids).exec((err, records) => {
-            res.render('checklist/show', {
-                list,
-                records,
-                userData: req.user
+            Bird.find({}, function (error, birds) {
+                console.log(error);
+                res.render('checklist/show', {
+                    list,
+                    birds,
+                    records,
+                    userData: req.user
+                });
             });
         });
 
