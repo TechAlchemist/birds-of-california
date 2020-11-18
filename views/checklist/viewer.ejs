@@ -23,8 +23,23 @@
                   <p> Last Updated: <%= list.updatedAt.toLocaleString()%> </p>
                 </div>
                 <div class="card-action">
-                    <a href="/checklist/<%= list._id %>"> Delete List </a>
-                    <a href="/checklist/<%= list._id %>"> View Checklist </a>
+                    <div class="row">
+                        <div class="col s6">
+                            <form action="/checklist/<%= list._id %>?_method=DELETE"  method="POST">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Delete
+                                    <i class="material-icons right">delete</i>
+                                  </button>
+                            </form>
+                        </div>
+                        <div class="col s6">
+                            <a class="waves-effect waves-light btn" href="/checklist/<%= list._id %>"><i class="material-icons right">pageview</i>View Checklist</a>
+                        </div>
+
+     
+                    </div>
+
+
+         
                 </div>
               </div>
             </div>

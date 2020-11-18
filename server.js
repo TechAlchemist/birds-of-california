@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan')
 const authorization = require('./utils/authorization');
+const methodOverride = require('method-override')
 const port = 3000;
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -17,6 +18,7 @@ require('./config/database');
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(methodOverride('_method'))
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 

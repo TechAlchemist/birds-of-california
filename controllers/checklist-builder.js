@@ -66,22 +66,14 @@ function show(req, res) {
 }
 
 function update(req, res) {
-
     let arr = [];
     let data = req.body;
-    // console.log(req.body);
-
     for (birdId in data.birdsIds) {
         arr.push(data.birdsIds[birdId]);
     }
     let joinedArr = arr.join(',');
-    // console.log(joinedArr);
     let listId = data.listId;
     let listTitle = data.listTitle;
-
-    // checklist.belongsTo = '5faee53eef98e415608b56c9';
-    // checklist.birdIds = joinedArr;
-
     Checklist.findById(listId, function (error, checklist) {
         checklist.birdIds = joinedArr; // update the birds in the list
         if (listTitle != '') checklist.listTitle = listTitle; // update list title
@@ -97,8 +89,17 @@ function update(req, res) {
             }
         })
     })
+}
 
-
+function deleteList(req, res) {
+    console.log('IM AM IN DELETE!!!! YAAAAAAAY')
+    Checklist.findById(req.params.id, function(err, list) {
+        console.log('THIS NEEDS TO DIE!!!', list);
+        list.remove();
+        list.save( function(error) {
+            res.redirect('/checklist/viewer');
+        })
+    })
 }
 
 module.exports = {
@@ -106,6 +107,7 @@ module.exports = {
     create,
     viewer,
     show,
-    update
+    update,
+    delete : deleteList
 };
 
