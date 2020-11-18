@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=B612&display=swap");
+
+body {
+  font-family: "B612", sans-serif;
+  background-image: url("https://wallpapershome.com/images/pages/pic_h/18939.jpg");
+  background-size: cover;
+  font-weight: 14px;
+  color: white;
+  letter-spacing: 0.4px;
+}
+
+.error-text {
+  margin-top: 15px;
+  color: color;
+  font-weight: bold;
+}
+
+.row {
+  margin-top: 100px;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+a {
+  color: #606c38 !important;
+  font-size: 20px;
+}
+a:hover {
+  color: #c2e452 !important;
+}
+input[type="text"] {
+  color: #c2e452 !important;
+}
+input[type="email"] {
+  color: #c2e452 !important;
+}
+input[type="password"] {
+  color: #c2e452 !important;
+}
+button {
+    margin-bottom: 20px !important;
+}
+#title {
+  font-size: 30px !important;
+  color: white !important;
+}
