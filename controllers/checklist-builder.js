@@ -1,5 +1,4 @@
 const Bird = require('../models/bird');
-const checklist = require('../models/checklist');
 const Checklist = require('../models/checklist');
 
 
@@ -16,16 +15,13 @@ function index(req, res) {
 function create(req, res) {
     let arr = [];
     let data = req.body;
-    // console.log(req.body);
     console.log('data length = ', data.birdsIds['0']);
     for (birdId in data.birdsIds) {
         arr.push(data.birdsIds[birdId]);
     }
     let joinedArr = arr.join(',');
     let title = data.title;
-
     const checklist = new Checklist();
-
     checklist.belongsTo = '5faee53eef98e415608b56c9';
     checklist.birdIds = joinedArr;
     if (title != '') checklist.listTitle = title;
@@ -92,9 +88,7 @@ function update(req, res) {
 }
 
 function deleteList(req, res) {
-    console.log('IM AM IN DELETE!!!! YAAAAAAAY')
     Checklist.findById(req.params.id, function(err, list) {
-        console.log('THIS NEEDS TO DIE!!!', list);
         list.remove();
         list.save( function(error) {
             res.redirect('/checklist/viewer');

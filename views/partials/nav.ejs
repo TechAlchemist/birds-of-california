@@ -1,23 +1,42 @@
-<ul>
+<ul id="slide-out" class="sidenav">
+    <li>
+        <% if (userData != null && userData.username != '') { %>
+        <div class="user-view">
+            <div class="background">
+                <img src="/img/losthills.jpg">
+            </div>
+            <a href="#user"><img class="circle" src="/img/profile.jpg"></a>
+            <a href="#name"><span class="white-text name"> <%=userData.username%></span></a>
+            <a href="#email"><span class="white-text email"><%=userData.email%></span></a>
+        </div>
+        <% } else {} %>
+    </li>
+
+
+    <li><a class="waves-effect" href="/species"><i class="material-icons">explore</i>Species Explorer</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
 
     <% if (userData != null && userData.username != '') { %>
-    <h1> <%= userData.username %> is signed in. </h1>
+
+    <li><a class="waves-effect" href="/checklist"><i class="material-icons">list_alt</i>Checklist Builder</a></li>
     <li>
-        <a href="/checklist/viewer">My Checklists</a>
+        <div class="divider"></div>
     </li>
-    <li>
-        <a href="users/signout">Logout</a>
-    </li>
+    <li><a class="waves-effect" href="users/signout"><i class="material-icons">exit_to_app</i>Logout</a></li>
     <% } else { %>
+
+    <li><a class="waves-effect" href="/users/login"><i class="material-icons">login</i>Login</a></li>
     <li>
-        <a href="/users/new">Signup</a>
+        <div class="divider"></div>
     </li>
+    <li><a class="waves-effect" href="/users/new"><i class="material-icons">cloud</i>Sign Up</a></li>
     <li>
-        <a href="/users/login">Login</a>
+        <div class="divider"></div>
     </li>
     <% } %>
-    <li> <a href="/species"> Species Explorer </a> </li>
-    <li> <a href="/sightings"> Sightings Reports </a> </li>
-    <li> <a href="/checklist"> Checklist Builder </a> </li>
+
+
 
 </ul>
