@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const connectionURI = process.env.DB_URL;
+//create the shortcut variable
+const db = mongoose.connection
 
-const db = mongoose.connection;
 
-mongoose.connect(connectionURI, {
+//connect to the database
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-});
+    useCreateIndex: true, 
+    useUnifiedTopology: true 
+})
 
-
-db.on('connected', function () {
-    console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
-});
+//listen for the connection
+db.on('connected', function(){
+    console.log(`connected to MongoDB on ${db.host}:${db.port}`)
+})
