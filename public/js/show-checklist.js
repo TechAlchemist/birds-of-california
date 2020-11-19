@@ -70,7 +70,6 @@ $('#deleteBirdSubmit').click(function () {
 });
 
 $('#submitAddBirdBtn').click(function () {
-    alert('I DID IT YEAH !')
     let table = $('#checkListShow').DataTable();
     let tableData = table.rows().data();
     let birdIds = {};
