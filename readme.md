@@ -19,6 +19,12 @@
 ## Sidebar
 ![Sidebar Componet](./screenshots/sidebar.png)
 
+## Initial Wireframes
+![Initial Wireframes](./screenshots/wireframes.png)
+
+## Entity Relationship Diagram
+![Entity Diagram](./screenshots/erd.png)
+
 ---
 
 ## Technology Used
@@ -30,6 +36,7 @@
 - jQuery 
 - Javascript
 - MaterializeCSS
+- DataTables plugin
 
 
 ---
